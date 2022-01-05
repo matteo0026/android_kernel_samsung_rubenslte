@@ -23,9 +23,7 @@
 #include <linux/input.h>
 #include <linux/log2.h>
 #include <linux/qpnp/power-on.h>
-#ifdef CONFIG_SEC_DEBUG
 #include <mach/sec_debug.h>
-#endif
 
 #define PMIC_VER_8941           0x01
 #define PMIC_VERSION_REG        0x0105

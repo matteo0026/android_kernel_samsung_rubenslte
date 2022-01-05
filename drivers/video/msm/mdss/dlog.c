@@ -87,13 +87,13 @@ static u32 dump_size;
 struct debug_mdp *debug_mdp;
 //MDP Instace Variable
 #ifdef __KERNEL__
-#ifdef CONFIG_SEC_DEBUG_SCHED_LOG
+//#ifdef CONFIG_SEC_DEBUG_SCHED_LOG
 extern struct sec_debug_log *secdbg_log;
 extern struct sec_debug_subsys_data_krait *secdbg_krait;
 extern struct _dlogdebug __start___dlog[];
 extern struct _dlogdebug __stop___dlog[];
 extern struct mdss_data_type *mdss_res;
-#endif
+//#endif
 static spinlock_t xlock;
 extern struct msm_mdp_interface mdp5;
 static int sec_debug_level = 1;
@@ -645,9 +645,9 @@ static enum  {	DLOG_BUFFER_READING,	KLOG_BUFFER_READING,	SECLOG_BUFFER_READING, 
 		read_ongoing = 1;	
 		debug_mdp->reserv = CONFIG_NR_CPUS;
 #ifdef CONFIG_SEC_DEBUG_SCHED_LOG
-		debug_mdp->klog_size =secdbg_krait->log.size;
-		debug_mdp->seclog_size = 0;
-		pr_debug("Klog Size: %d SecLog Size: %d\n", debug_mdp->klog_size, debug_mdp->seclog_size);
+//		debug_mdp->klog_size =secdbg_krait->log.size;
+//		debug_mdp->seclog_size = 0;
+//		pr_debug("Klog Size: %d SecLog Size: %d\n", debug_mdp->klog_size, debug_mdp->seclog_size);
 		
 #endif		
 		spin_unlock_irqrestore(&xlock, flags);
@@ -670,10 +670,10 @@ static enum  {	DLOG_BUFFER_READING,	KLOG_BUFFER_READING,	SECLOG_BUFFER_READING, 
 #endif
 		
 #ifndef CONFIG_SEC_DEBUG_SCHED_LOG
-					read_state = DLOG_BUFFER_READING;
-					read_byte = 0;
-					pr_info("Reading complete...\n");
-					return 0;
+//					read_state = DLOG_BUFFER_READING;
+//					read_byte = 0;
+//					pr_info("Reading complete...\n");
+//					return 0;
 #endif
 	}
 
@@ -692,7 +692,7 @@ static enum  {	DLOG_BUFFER_READING,	KLOG_BUFFER_READING,	SECLOG_BUFFER_READING, 
 
 #ifdef CONFIG_SEC_DEBUG_SCHED_LOG
 	
-	if(read_state == KLOG_BUFFER_READING && read_byte >= debug_mdp->size + debug_mdp->klog_size ) {
+/*	if(read_state == KLOG_BUFFER_READING && read_byte >= debug_mdp->size + debug_mdp->klog_size ) {
 
 		read_state = DLOG_BUFFER_READING;
 					read_byte = 0;
@@ -712,7 +712,7 @@ static enum  {	DLOG_BUFFER_READING,	KLOG_BUFFER_READING,	SECLOG_BUFFER_READING, 
 
 		read_byte += retval;
 		*f_pos = read_byte;
-	}
+	}*/
 
 #endif
 
